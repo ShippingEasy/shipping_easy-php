@@ -4,7 +4,7 @@ abstract class ShippingEasy
 {
   public static $apiKey;
   public static $apiSecret;
-  public static $apiBase = 'http://localhost:5000';
+  public static $apiBase = 'https://app.shippingeasy.com';
   public static $apiVersion = null;
   const VERSION = '0.0.1';
 
