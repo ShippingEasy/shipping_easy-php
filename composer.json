@@ -1,0 +1,30 @@
+{
+  "name": "ShippingEasy/shipping_easy-php",
+  "description": "ShippingEasy API PHP Library",
+  "keywords": [
+    "ShippingEasy",
+    "shipping",
+    "api"
+  ],
+  "homepage": "https://shippingeasy.com/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "ShippingEasy and contributors",
+      "homepage": "https://github.com/ShippingEasy/shipping_easy-php/contributors"
+    }
+  ],
+  "require": {
+    "php": ">=5.2",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*"
+  },
+  "require-dev": {
+    "vierbergenlars/simpletest": "*",
+    "php-vcr/php-vcr": "dev-master"
+  },
+  "autoload": {
+    "classmap": ["lib/ShippingEasy/"]
+  }
+}
