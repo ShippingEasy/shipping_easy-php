@@ -1,4 +1,4 @@
-= Installation
+### Installation
 
 Obtain the latest version of the ShippingEasy PHP bindings with:
 
@@ -13,9 +13,9 @@ Simple usage looks like:
     ShippingEasy::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249');
     ShippingEasy::setApiSecret('f01d4c9bb1dec1a5f46d2a3ba9dfbdc6f3c145604440fb145677eb7ef3af9731');
 
-= Documentation
 
-= Tests
+
+### Tests
 
 In order to run tests you have to install SimpleTest (http://packagist.org/packages/vierbergenlars/simpletest) via Composer (http://getcomposer.org/) (recommended way):
 
