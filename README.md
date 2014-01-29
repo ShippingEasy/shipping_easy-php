@@ -60,6 +60,221 @@ The order could not be created on the server for one or more of the following re
 
 The exception will contain a message that indicates which of these conditions failed.
 
+#### Order Attributes
+
+The following is a list of attributes that should be provided to the ShippingEasy_Order object as a associative array.
+
+ext_order_identifier
+: *Required.* The e-commerce system's order ID.
+
+ordered_at
+: *Required.* Timestamp when the order was created.
+
+order_status
+: Possible values are "awaiting_shipment", "awaiting_payment", "awaiting_fulfillment", "awaiting_shipment", "partially_shipped". Default is "awaiting_shipment".
+
+total_including_tax
+: Defaults to 0.0 if not specified.
+
+total_excluding_tax
+: Defaults to 0.0 if not specified.
+
+discount_amount
+: Defaults to 0.0 if not specified.
+
+coupon_discount
+: Defaults to 0.0 if not specified.
+
+subtotal_including_tax
+: Defaults to 0.0 if not specified.
+
+subtotal_excluding_tax
+: Defaults to 0.0 if not specified.
+
+subtotal_tax
+: Defaults to 0.0 if not specified.
+
+total_tax
+: Defaults to 0.0 if not specified.
+
+base_shipping_cost
+: Defaults to 0.0 if not specified.
+
+shipping_cost_including_tax
+: Defaults to 0.0 if not specified.
+
+shipping_cost_excluding_tax
+: Defaults to 0.0 if not specified.
+
+shipping_cost_tax
+: Defaults to 0.0 if not specified.
+
+base_handling_cost
+: Defaults to 0.0 if not specified.
+
+handling_cost_excluding_tax
+: Defaults to 0.0 if not specified.
+
+handling_cost_including_tax
+: Defaults to 0.0 if not specified.
+
+handling_cost_tax
+: Defaults to 0.0 if not specified.
+
+base_wrapping_cost
+: Defaults to 0.0 if not specified.
+
+wrapping_cost_excluding_tax
+: Defaults to 0.0 if not specified.
+
+wrapping_cost_including_tax
+: Defaults to 0.0 if not specified.
+
+wrapping_cost_tax
+: Defaults to 0.0 if not specified.
+
+notes
+: Customer notes on the order.
+
+billing_company
+: Company name for billing address
+
+billing_first_name
+: Customer first name for billing address
+
+billing_last_name
+: Customer last name for billing address
+
+billing_address
+: First address line for billing address
+
+billing_address2
+: Additional address line for billing address
+
+billing_city
+: City name for billing address
+
+billing_state
+: State name for billing address
+
+billing_country
+: Country name for billing address
+
+billing_postal_code
+: Postal code for billing address
+
+billing_phone_number
+: Phone number.
+
+billing_email
+: Email address
+
+recipients
+: A nested associative array of recipient attributes. At least one recipient is required.
+
+recipients > company
+: Company name for shipping address
+
+recipients > first_name
+: Customer first name for shipping address
+
+recipients > last_name
+: Customer last name for shipping address
+
+recipients > address
+: *Required.* First address line for shipping address
+
+recipients > address2
+: Additional address line for shipping address
+
+recipients > city
+: City name for shipping address
+
+recipients > state
+: State name for shipping address
+
+recipients > country
+: Country name for shipping address
+
+recipients > residential
+: Whether or not address is residential or not. Value can be "true" or "false".
+
+recipients > postal_code
+: *Required.* Postal code for shipping address
+
+recipients > postal_code_plus_4
+: Postal code plus 4 for shipping address
+
+recipients > phone_number
+: Customer phone number
+
+recipients > email
+: Customer email address
+
+recipients > base_cost
+: Cost before tax for all line items sent to this recipient
+
+recipients > cost_excluding_tax, BigDecimal, default: 0.0
+: Cost before tax for all line items sent to this recipient
+
+recipients > cost_including_tax, BigDecimal, default: 0.0
+: Cost including tax for all line items sent to this recipient
+
+recipients > cost_tax, BigDecimal, default: 0.0
+: Cost of the tax for all line items sent to this recipient
+
+recipients > base_handling_cost, BigDecimal, default: 0.0
+: Handling cost before tax for all line items sent to this recipient
+
+recipients > handling_cost_excluding_tax, BigDecimal, default: 0.0
+: Handling cost before tax for all line items sent to this recipient
+
+recipients > handling_cost_including_tax, BigDecimal, default: 0.0
+: Handling cost including tax for all line items sent to this recipient
+
+recipients > handling_cost_tax
+: Handling cost of the tax for all line items sent to this recipient
+
+recipients > shipping_zone_id
+: ID of the shipping zone.
+
+recipients > shipping_zone_name
+: Name of the shipping zone.
+
+recipients > shipping_method
+: Method of shipment.
+
+recipients > items_total
+: Total number of items.
+
+recipients > items_shipped
+: Total number of items shipped.
+
+recipients > line_items
+: A nested associative array of line item attributes. At least one line item is required.
+
+recipients > line_items > item_name
+: Name of the item/product.
+
+recipients > line_items > sku
+: SKU of the item/product.
+
+recipients > line_items > bin_picking_number
+: Bin picking number of the item/product.
+
+recipients > line_items > weight_in_ounces
+: Weight of the line item in ounces.
+
+recipients > line_items > quantity
+: Quantity of the the items for the line item.
+
+recipients > line_items > total_excluding_tax
+: Total excluding tax for the line item.
+
+recipients > line_items > unit_price
+: Unit price of the item.
+
+
 ### Cancelling an order
 
 Sometimes an e-commerce system will mark an order as shipped outside of the ShippingEasy system. Therefore an API call is required to remove this order from ShippingEasy so that it is not double-shipped. 
