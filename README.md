@@ -64,216 +64,215 @@ The exception will contain a message that indicates which of these conditions fa
 
 The following is a list of attributes that should be provided to the ShippingEasy_Order object as a associative array.
 
-ext_order_identifier
+**ext_order_identifier**
 : *Required.* The e-commerce system's order ID.
 
-ordered_at
+**ordered_at**
 : *Required.* Timestamp when the order was created.
 
-order_status
+**order_status**
 : Possible values are "awaiting_shipment", "awaiting_payment", "awaiting_fulfillment", "awaiting_shipment", "partially_shipped". Default is "awaiting_shipment".
 
-total_including_tax
+**total_including_tax**
 : Defaults to 0.0 if not specified.
 
-total_excluding_tax
+**total_excluding_tax**
 : Defaults to 0.0 if not specified.
 
-discount_amount
+**discount_amount**
 : Defaults to 0.0 if not specified.
 
-coupon_discount
+**coupon_discount**
 : Defaults to 0.0 if not specified.
 
-subtotal_including_tax
+**subtotal_including_tax**
 : Defaults to 0.0 if not specified.
 
-subtotal_excluding_tax
+**subtotal_excluding_tax**
 : Defaults to 0.0 if not specified.
 
-subtotal_tax
+**subtotal_tax**
 : Defaults to 0.0 if not specified.
 
-total_tax
+**total_tax**
 : Defaults to 0.0 if not specified.
 
-base_shipping_cost
+**base_shipping_cost**
 : Defaults to 0.0 if not specified.
 
-shipping_cost_including_tax
+**shipping_cost_including_tax**
 : Defaults to 0.0 if not specified.
 
-shipping_cost_excluding_tax
+**shipping_cost_excluding_tax**
 : Defaults to 0.0 if not specified.
 
-shipping_cost_tax
+**shipping_cost_tax**
 : Defaults to 0.0 if not specified.
 
-base_handling_cost
+**base_handling_cost**
 : Defaults to 0.0 if not specified.
 
-handling_cost_excluding_tax
+**handling_cost_excluding_tax**
 : Defaults to 0.0 if not specified.
 
-handling_cost_including_tax
+**handling_cost_including_tax**
 : Defaults to 0.0 if not specified.
 
-handling_cost_tax
+**handling_cost_tax**
 : Defaults to 0.0 if not specified.
 
-base_wrapping_cost
+**base_wrapping_cost**
 : Defaults to 0.0 if not specified.
 
-wrapping_cost_excluding_tax
+**wrapping_cost_excluding_tax**
 : Defaults to 0.0 if not specified.
 
-wrapping_cost_including_tax
+**wrapping_cost_including_tax**
 : Defaults to 0.0 if not specified.
 
-wrapping_cost_tax
+**wrapping_cost_tax**
 : Defaults to 0.0 if not specified.
 
-notes
+**notes**
 : Customer notes on the order.
 
-billing_company
+**billing_company**
 : Company name for billing address
 
-billing_first_name
+**billing_first_name**
 : Customer first name for billing address
 
-billing_last_name
+**billing_last_name**
 : Customer last name for billing address
 
-billing_address
+**billing_address**
 : First address line for billing address
 
-billing_address2
+**billing_address2**
 : Additional address line for billing address
 
-billing_city
+**billing_city**
 : City name for billing address
 
-billing_state
+**billing_state**
 : State name for billing address
 
-billing_country
+**billing_country**
 : Country name for billing address
 
-billing_postal_code
+**billing_postal_code**
 : Postal code for billing address
 
-billing_phone_number
+**billing_phone_number**
 : Phone number.
 
-billing_email
+**billing_email**
 : Email address
 
-recipients
+**recipients**
 : A nested associative array of recipient attributes. At least one recipient is required.
 
-recipients > company
+**recipients > company**
 : Company name for shipping address
 
-recipients > first_name
+**recipients > first_name**
 : Customer first name for shipping address
 
-recipients > last_name
+**recipients > last_name**
 : Customer last name for shipping address
 
-recipients > address
+**recipients > address**
 : *Required.* First address line for shipping address
 
-recipients > address2
+**recipients > address2**
 : Additional address line for shipping address
 
-recipients > city
+**recipients > city**
 : City name for shipping address
 
-recipients > state
+**recipients > state**
 : State name for shipping address
 
-recipients > country
+**recipients > country**
 : Country name for shipping address
 
-recipients > residential
+**recipients > residential**
 : Whether or not address is residential or not. Value can be "true" or "false".
 
-recipients > postal_code
+**recipients > postal_code**
 : *Required.* Postal code for shipping address
 
-recipients > postal_code_plus_4
+**recipients > postal_code_plus_4**
 : Postal code plus 4 for shipping address
 
-recipients > phone_number
+**recipients > phone_number**
 : Customer phone number
 
-recipients > email
+**recipients > email**
 : Customer email address
 
-recipients > base_cost
+**recipients > base_cost**
 : Cost before tax for all line items sent to this recipient
 
-recipients > cost_excluding_tax, BigDecimal, default: 0.0
+**recipients > cost_excluding_tax**
 : Cost before tax for all line items sent to this recipient
 
-recipients > cost_including_tax, BigDecimal, default: 0.0
+**recipients > cost_including_tax**
 : Cost including tax for all line items sent to this recipient
 
-recipients > cost_tax, BigDecimal, default: 0.0
+**recipients > cost_tax**
 : Cost of the tax for all line items sent to this recipient
 
-recipients > base_handling_cost, BigDecimal, default: 0.0
+**recipients > base_handling_cost**
 : Handling cost before tax for all line items sent to this recipient
 
-recipients > handling_cost_excluding_tax, BigDecimal, default: 0.0
+**recipients > handling_cost_excluding_tax**
 : Handling cost before tax for all line items sent to this recipient
 
-recipients > handling_cost_including_tax, BigDecimal, default: 0.0
+**recipients > handling_cost_including_tax**
 : Handling cost including tax for all line items sent to this recipient
 
-recipients > handling_cost_tax
+**recipients > handling_cost_tax**
 : Handling cost of the tax for all line items sent to this recipient
 
-recipients > shipping_zone_id
+**recipients > shipping_zone_id**
 : ID of the shipping zone.
 
-recipients > shipping_zone_name
+**recipients > shipping_zone_name**
 : Name of the shipping zone.
 
-recipients > shipping_method
+**recipients > shipping_method**
 : Method of shipment.
 
-recipients > items_total
+**recipients > items_total**
 : Total number of items.
 
-recipients > items_shipped
+**recipients > items_shipped**
 : Total number of items shipped.
 
-recipients > line_items
+**recipients > line_items**
 : A nested associative array of line item attributes. At least one line item is required.
 
-recipients > line_items > item_name
+**recipients > line_items > item_name**
 : Name of the item/product.
 
-recipients > line_items > sku
+**recipients > line_items > sku**
 : SKU of the item/product.
 
-recipients > line_items > bin_picking_number
+**recipients > line_items > bin_picking_number**
 : Bin picking number of the item/product.
 
-recipients > line_items > weight_in_ounces
+**recipients > line_items > weight_in_ounces**
 : Weight of the line item in ounces.
 
-recipients > line_items > quantity
+**recipients > line_items > quantity**
 : Quantity of the the items for the line item.
 
-recipients > line_items > total_excluding_tax
+**recipients > line_items > total_excluding_tax**
 : Total excluding tax for the line item.
 
-recipients > line_items > unit_price
+**recipients > line_items > unit_price**
 : Unit price of the item.
-
 
 ### Cancelling an order
 
