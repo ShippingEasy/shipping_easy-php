@@ -2,13 +2,14 @@
 
 class ShippingEasy_SignedUrl
 {
-  public function __construct($http_method=null, $path=null, $params=null, $json_body=null, $api_timestamp=null)
+  public function __construct($http_method=null, $path=null, $params=null, $json_body=null, $api_timestamp=null, $api_secret = null, $api_key = null)
   {
-    $secret = ShippingEasy::$apiSecret;    
-    $params["api_key"] = ShippingEasy::$apiKey;
+    $api_secret = isset($api_secret) ? $api_secret : ShippingEasy::$apiSecret;    
+    $params["api_key"] = isset($api_key) ? $api_key : ShippingEasy::$apiKey;
     $params["api_timestamp"] = isset($api_timestamp) ? $api_timestamp : time();
-    $signature_object = new ShippingEasy_Signature($secret, $http_method, $path, $params, $json_body);
+    $signature_object = new ShippingEasy_Signature($api_secret, $http_method, $path, $params, $json_body);
     $params["api_signature"] = $signature_object->encrypted();        
+    
     $this->params = $params;
     $this->path = $path;
   }
