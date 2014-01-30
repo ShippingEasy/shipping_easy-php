@@ -23,9 +23,9 @@ require(dirname(__FILE__) . '/ShippingEasy/AuthenticationError.php');
 require(dirname(__FILE__) . '/ShippingEasy/InvalidRequestError.php');
 
 require(dirname(__FILE__) . '/ShippingEasy/ApiRequestor.php');
-require(dirname(__FILE__) . '/ShippingEasy/SignedUrl.php');
-require(dirname(__FILE__) . '/ShippingEasy/Signature.php');
+require(dirname(__FILE__) . '/ShippingEasy/Authenticator.php');
 require(dirname(__FILE__) . '/ShippingEasy/Object.php');
 require(dirname(__FILE__) . '/ShippingEasy/Order.php');
+require(dirname(__FILE__) . '/ShippingEasy/Signature.php');
+require(dirname(__FILE__) . '/ShippingEasy/SignedUrl.php');
 require(dirname(__FILE__) . '/ShippingEasy/Cancellation.php');
-

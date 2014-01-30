@@ -37,5 +37,6 @@ require_once(dirname(__FILE__) . '/ShippingEasy/TestCase.php');
 require_once(dirname(__FILE__) . '/ShippingEasy/ApiRequestorTest.php');
 require_once(dirname(__FILE__) . '/ShippingEasy/AuthenticationErrorTest.php');
 require_once(dirname(__FILE__) . '/ShippingEasy/Error.php');
+require_once(dirname(__FILE__) . '/ShippingEasy/AuthenticatorTest.php');
 require_once(dirname(__FILE__) . '/ShippingEasy/SignatureTest.php');
 require_once(dirname(__FILE__) . '/ShippingEasy/SignedUrlTest.php');
