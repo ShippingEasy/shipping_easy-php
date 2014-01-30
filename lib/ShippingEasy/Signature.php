@@ -48,7 +48,6 @@ class ShippingEasy_Signature
   
   public function encrypted()
   {
-    echo $this->plaintext();
     return hash_hmac('sha256', $this->plaintext(), $this->getApiSecret());
   }
   
