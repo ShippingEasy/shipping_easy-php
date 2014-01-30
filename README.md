@@ -62,7 +62,9 @@ The exception will contain a message that indicates which of these conditions fa
 
 #### Order Attributes
 
-The following is a list of attributes that should be provided to the ShippingEasy_Order object as a associative array.
+The following is a list of attributes that should be provided to the ShippingEasy_Order object as a associative array. 
+
+An example associative array for the create order API call may be found here: https://gist.github.com/twmills/8711096.
 
 **ext_order_identifier**
 : *Required.* The e-commerce system's order ID.
