@@ -30,6 +30,23 @@ If you are a 3rd party plugin developer and have a staging account with Shipping
 
     ShippingEasy::setApiBase('https://staging.shippingeasy.com');
 
+## Authentication
+
+The ShippingEasy API will hit a callback URL when an order, or a part of an order, has been shipped. The request to the callback URL will be also signed with the same shared secret found in the store's API settings.
+
+This PHP library provides an Authenticator to handle verifying the signed request from ShippingEasy. Here's an example of how to use it (after you configured the libaray with your credentials in the step above):
+
+    $authenticator = new ShippingEasy_Authenticator("post", "/callback", null,"{\"shipment\":{\"id\":\"1234\"}}");
+    $authenticator.isAuthenticated(); # returns true or false
+    
+The arguments for the constructor are as follows:
+
+* **http_method** - The method of the http request. E.g. "post" or "get".
+* **path** - The path of the request's uri. E.g. "/orders/callback"
+* **params** - An associative array of the request's query string parameters. E.g. array("api_signature" => "asdsadsad", "api_timestamp" => "1234567899")
+ * **json_body** - The request body as a JSON string.
+ * **api_secret** - Optional. The ShippingEasy API secret for the store. Defaults to the global configuration if set.
+
 ## API Calls
 
 ### Adding an order
