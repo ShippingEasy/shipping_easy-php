@@ -12,10 +12,10 @@ class ShippingEasy_AuthenticatorTest extends UnitTestCase
     $signature = new ShippingEasy_Signature($secret, $method, $path, $params, $json_body);    
     $params["api_signature"] = $signature->encrypted();
     
-    $authenticator = new ShippingEasy_Authenticator($secret, $method, $path, $params, $json_body);
+    $authenticator = new ShippingEasy_Authenticator($method, $path, $params, $json_body, $secret);
     $this->assertTrue($authenticator->isAuthenticated());
     
-    $authenticator = new ShippingEasy_Authenticator($secret, $method, $path, $params, null);
+    $authenticator = new ShippingEasy_Authenticator($method, $path, $params, null, $secret);
     $this->assertFalse($authenticator->isAuthenticated());
   }
   
