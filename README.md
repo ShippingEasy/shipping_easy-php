@@ -262,7 +262,7 @@ An example associative array for the create order API call may be found here: ht
 : SKU of the item/product.
 
 **recipients > line_items > bin_picking_number**
-: Bin picking number of the item/product.
+: Bin number where the item may be stored in a warehouse.
 
 **recipients > line_items > weight_in_ounces**
 : Weight of the line item in ounces.
