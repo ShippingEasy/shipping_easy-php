@@ -6,7 +6,7 @@ abstract class ShippingEasy
   public static $apiSecret;
   public static $apiBase = 'https://app.shippingeasy.com';
   public static $apiVersion = null;
-  const VERSION = '0.1.1';
+  const VERSION = '0.1.2';
 
   public static function getApiKey()
   {
@@ -17,7 +17,7 @@ abstract class ShippingEasy
   {
     self::$apiKey = $apiKey;
   }
-  
+
   public static function setApiSecret($apiSecret)
   {
     self::$apiSecret = $apiSecret;
@@ -32,7 +32,7 @@ abstract class ShippingEasy
   {
     self::$apiVersion = $apiVersion;
   }
-  
+
   public static function setApiBase($apiBase)
   {
     self::$apiBase = $apiBase;
