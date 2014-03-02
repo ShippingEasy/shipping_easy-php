@@ -19,7 +19,7 @@ To get started, add the following to your PHP script:
 
 ### Configuration
 
-You will need a ShippingEasy API key and secret to sign your API requests. These can be found in your store's settings (https://app.shippingeasy.com/settings/stores). Please note that these credentials are for a specific store on a ShippingEasy account and you could potentially have multiple stores.
+You will need a ShippingEasy API key and secret to sign your API requests. These can be found in your account's settings (https://app.shippingeasy.com/settings/api_credentials).
 
 Once you have the credentials, add them to the libary's configuration:
 
@@ -38,31 +38,31 @@ This PHP library provides an Authenticator to handle verifying the signed reques
 
     $authenticator = new ShippingEasy_Authenticator("post", "/callback", null,"{\"shipment\":{\"id\":\"1234\"}}");
     $authenticator.isAuthenticated(); # returns true or false
-    
+
 The arguments for the constructor are as follows:
 
 * **http_method** - The method of the http request. E.g. "post" or "get".
 * **path** - The path of the request's uri. E.g. "/orders/callback"
 * **params** - An associative array of the request's query string parameters. E.g. array("api_signature" => "asdsadsad", "api_timestamp" => "1234567899")
  * **json_body** - The request body as a JSON string.
- * **api_secret** - Optional. The ShippingEasy API secret for the store. Defaults to the global configuration if set.
+ * **api_secret** - Optional. The ShippingEasy API secret for the customer account. Defaults to the global configuration if set.
 
 ## API Calls
 
 ### Adding an order
 
-To add an order to a store, first instantiate a new order object with an associative array of the order data. (A comprehensive list of the data attributes and their definitions can be found below.)
+To add an order to a store, first instantiate a new order object with the store's API key and an associative array of the order data. (A comprehensive list of the data attributes and their definitions can be found below.)
 
-    $order = new ShippingEasy_Order(array("external_order_identifier" => "ABC123", "subtotal_including_tax" => "12.38", ....));
+    $order = new ShippingEasy_Order("d8821dde1d32f408def40b77273d5c11", array("external_order_identifier" => "ABC123", "subtotal_including_tax" => "12.38", ....));
 
 Then simply call create to execute the remote call:
 
     $order->create();
-    
+
 If successful the call will return a JSON hash with the ShippingEasy order ID, as well as the external order identifier originally supplied in your call.
 
     { "order" => { "id" => "27654", "external_order_identifier" => "ABC123" } }
-    
+
 #### Possible Exceptions
 
 ##### ShippingEasy_AuthenticationError
@@ -79,7 +79,7 @@ The exception will contain a message that indicates which of these conditions fa
 
 #### Order Attributes
 
-The following is a list of attributes that should be provided to the ShippingEasy_Order object as a associative array. 
+The following is a list of attributes that should be provided to the ShippingEasy_Order object as a associative array.
 
 An example associative array for the create order API call may be found here: https://gist.github.com/twmills/8711096.
 
@@ -295,20 +295,20 @@ An example associative array for the create order API call may be found here: ht
 
 ### Cancelling an order
 
-Sometimes an e-commerce system will mark an order as shipped outside of the ShippingEasy system. Therefore an API call is required to remove this order from ShippingEasy so that it is not double-shipped. 
+Sometimes an e-commerce system will mark an order as shipped outside of the ShippingEasy system. Therefore an API call is required to remove this order from ShippingEasy so that it is not double-shipped.
 
-First create a new cancellation object with the e-commerce order identifier used to create the order in ShippingEasy:
+First create a new cancellation object with your store's API key and the e-commerce order identifier used to create the order in ShippingEasy:
 
-    $cancellation = new ShippingEasy_Cancellation("ABC123");
+    $cancellation = new ShippingEasy_Cancellation("d8821dde1d32f408def40b77273d5c11", "ABC123");
 
 Then simply call create to execute the remote call:
 
     $cancellation->create();
-    
+
 If successful the call will return a JSON hash with the ShippingEasy order ID, as well as the external order identifier originally supplied in your call.
 
     { "order" => { "id" => "27654", "external_order_identifier" => "ABC123" } }
-    
+
 #### Possible Exceptions
 
 ##### ShippingEasy_AuthenticationError
