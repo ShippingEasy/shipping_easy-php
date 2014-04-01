@@ -9,7 +9,7 @@ class ShippingEasy_Order extends ShippingEasy_Object
 
   public function create()
   {
-    $this->request("post", "/api/stores/$this->store_api_key/orders", null, array("order" => $this->values));
+    return $this->request("post", "/api/stores/$this->store_api_key/orders", null, array("order" => $this->values));
   }
 
 }

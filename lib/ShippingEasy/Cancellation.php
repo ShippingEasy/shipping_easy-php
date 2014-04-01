@@ -10,7 +10,7 @@ class ShippingEasy_Cancellation extends ShippingEasy_Object
 
   public function create()
   {
-    $this->request("post", "/api/stores/$this->store_api_key/orders/$this->external_order_identifier/cancellations");
+    return $this->request("post", "/api/stores/$this->store_api_key/orders/$this->external_order_identifier/cancellations");
   }
 
 }

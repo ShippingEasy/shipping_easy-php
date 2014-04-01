@@ -42,7 +42,7 @@ class ShippingEasy_ApiRequestor
   {
     list($rbody, $rcode, $myApiKey) = $this->_requestRaw($meth, $path, $params, $payload);
     $resp = $this->_interpretResponse($rbody, $rcode);
-    return array($resp, $myApiKey);
+    return $resp;
   }
 
   public function handleApiError($rbody, $rcode, $resp)
@@ -50,10 +50,10 @@ class ShippingEasy_ApiRequestor
 
     if (!is_array($resp) || !isset($resp['errors']))
       throw new ShippingEasy_ApiError("Invalid response object from API: $rbody (HTTP response code was $rcode)", $rcode, $rbody, $resp);
-    
+
     $error = $resp['errors'];
     $message = isset($error[0]['message']) ? $error[0]['message'] : null;
-    
+
     switch ($rcode) {
     case 400:
       throw new ShippingEasy_InvalidRequestError(json_encode($error), $rcode, $rbody, $resp);
@@ -67,7 +67,7 @@ class ShippingEasy_ApiRequestor
   }
 
   private function _requestRaw($http_method, $path, $params, $payload)
-  {   
+  {
     $myApiKey = ShippingEasy::$apiKey;
     if (!$myApiKey)
       throw new ShippingEasy_Error('No API key provided.  (HINT: set your API key using "ShippingEasy::setApiKey(<API-KEY>)".  You can find your store\'s API keys from the ShippingEasy settings interface.');
@@ -75,7 +75,7 @@ class ShippingEasy_ApiRequestor
     $params = array();
     $url = new ShippingEasy_SignedUrl($http_method, $path, $params, $payload);
     $absUrl = $url->toString();
- 
+
     $langVersion = phpversion();
     $uname = php_uname();
 
@@ -84,9 +84,9 @@ class ShippingEasy_ApiRequestor
             		'lang_version' => $langVersion,
             		'publisher' => 'ShippingEasy',
             		'uname' => $uname);
-                
-    $headers = array('X-ShippingEasy-Client-User-Agent: ' . json_encode($ua), 
-                     'User-Agent: ShippingEasy/v1 PhpBindings/' . ShippingEasy::VERSION, 
+
+    $headers = array('X-ShippingEasy-Client-User-Agent: ' . json_encode($ua),
+                     'User-Agent: ShippingEasy/v1 PhpBindings/' . ShippingEasy::VERSION,
                      'Authorization: Bearer ' . $myApiKey);
 
     if (ShippingEasy::$apiVersion)
@@ -103,7 +103,6 @@ class ShippingEasy_ApiRequestor
     } catch (Exception $e) {
       throw new ShippingEasy_ApiError("Invalid response body from API: $rbody (HTTP response code was $rcode)", $rcode, $rbody);
     }
-
     if ($rcode < 200 || $rcode >= 300) {
       $this->handleApiError($rbody, $rcode, $resp);
     }
@@ -115,7 +114,7 @@ class ShippingEasy_ApiRequestor
     $curl = curl_init();
     $meth = strtolower($meth);
     $opts = array();
-        
+
     if ($meth == 'get') {
       $opts[CURLOPT_HTTPGET] = 1;
     } else if ($meth == 'post') {

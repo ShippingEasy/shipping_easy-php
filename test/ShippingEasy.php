@@ -6,7 +6,7 @@ echo "Running the ShippingEasy PHP bindings test suite.\n".
 
 function authorizeFromEnv()
 {
-  $apiKey = getenv('STRIPE_API_KEY');
+  $apiKey = getenv('SHIPPINGEASY_API_KEY');
   if (!$apiKey)
     $apiKey = "tGN0bIwXnHdwOa85VABjPdSn8nWY7G7I";
   ShippingEasy::setApiKey($apiKey);
