@@ -293,6 +293,9 @@ An example associative array for the create order API call may be found here: ht
 **recipients > line_items > unit_price**
 : Unit price of the item.
 
+**recipients > line_items > product_options**
+: Hash of product variations applicable to this line item. E.g. {"color":"red", "size":"XXL"}
+
 ### Cancelling an order
 
 Sometimes an e-commerce system will mark an order as shipped outside of the ShippingEasy system. Therefore an API call is required to remove this order from ShippingEasy so that it is not double-shipped.
