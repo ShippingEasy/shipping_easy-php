@@ -145,6 +145,15 @@ class ShippingEasy_ApiRequestor
     $rbody = curl_exec($curl);
     $errno = curl_errno($curl);
 
+    if ($errno == CURLE_SSL_PEER_CERTIFICATE) {
+      array_push($headers, 'ShippingEasy-Client-Info: {"ca":"Using ShippingEasy supplied CA bundle"}');
+      $cert = $this->caBundle();
+      curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+      curl_setopt($curl, CURLOPT_CAINFO, $cert);
+      $rbody = curl_exec($curl);
+      // $errno = curl_errno($curl); Not sure if I need this
+    }
+
     if ($rbody === false) {
       $errno = curl_errno($curl);
       $message = curl_error($curl);
@@ -176,5 +185,10 @@ class ShippingEasy_ApiRequestor
 
     $msg .= "\n\n(Network error [errno $errno]: $message)";
     throw new ShippingEasy_ApiConnectionError($msg);
+  }
+
+  private function caBundle()
+  {
+    return dirname(__FILE__) . '/../data/ca-certificates.crt';
   }
 }
