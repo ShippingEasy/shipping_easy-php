@@ -12,4 +12,19 @@ class ShippingEasy_Order extends ShippingEasy_Object
     return $this->request("post", "/api/stores/$this->store_api_key/orders", null, array("order" => $this->values));
   }
 
+  public function find($id)
+  {
+    return $this->request("get", "/api/orders/$id");
+  }
+
+  public function findAllByStore($params=array())
+  {
+    return $this->request("get", "/api/stores/$this->store_api_key/orders", $params);
+  }
+
+  public function findAll($params=array())
+  {
+    print_r($params);
+    return $this->request("get", "/api/orders", $params);
+  }
 }
