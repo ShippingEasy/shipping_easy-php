@@ -2,7 +2,7 @@
 
 class ShippingEasy_Order extends ShippingEasy_Object
 {
-  public function __construct($store_api_key, $values) {
+  public function __construct($store_api_key=null, $values=null) {
     $this->store_api_key = $store_api_key;
     $this->values = $values;
   }
