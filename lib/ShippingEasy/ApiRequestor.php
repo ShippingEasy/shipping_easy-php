@@ -72,7 +72,6 @@ class ShippingEasy_ApiRequestor
     if (!$myApiKey)
       throw new ShippingEasy_Error('No API key provided.  (HINT: set your API key using "ShippingEasy::setApiKey(<API-KEY>)".  You can find your store\'s API keys from the ShippingEasy settings interface.');
 
-    $params = array();
     $url = new ShippingEasy_SignedUrl($http_method, $path, $params, $payload);
     $absUrl = $url->toString();
 
