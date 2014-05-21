@@ -83,7 +83,7 @@ The exception will contain a message that indicates which of these conditions fa
 
 ### Retrieving multiple orders
 
-To retrieve multiple orders, call the find_all method on the Order resource class with a ShippingEasy order ID specified.
+To retrieve multiple orders, call the find_all method on the Order resource class.
 
     $order = new ShippingEasy_Order();
     $order->findAll();
