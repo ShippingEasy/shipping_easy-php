@@ -49,6 +49,86 @@ The arguments for the constructor are as follows:
 
 ## API Calls
 
+### Finding an order
+
+To retrieve a specific order, call the find method on the Order resource class with a ShippingEasy order ID specified.
+
+    $order = new ShippingEasy_Order();
+    $order->find(876);
+
+If successful the call will return a JSON hash with the ShippingEasy order.
+
+Example payload may be found here:
+
+https://gist.github.com/twmills/491b44fb6e78b20c1266
+
+#### Possible Exceptions
+
+##### ShippingEasy_AuthenticationError
+Your credentials could not be authenticated.
+
+##### ShippingEasy_InvalidRequestError
+The order could not be created on the server for one or more of the following reasons:
+
+* The API timestamp could not be parsed.
+* The requested resource could not be found.
+
+The exception will contain a message that indicates which of these conditions failed.
+
+### Retrieving multiple orders
+
+To retrieve multiple orders, call the find_all method on the Order resource class with a ShippingEasy order ID specified.
+
+    $order = new ShippingEasy_Order();
+    $order->findAll();
+
+If successful the call will return a JSON hash included an array of orders and a hash metadata detailing the conditions used in the search as well as pagination details regarding the response.
+
+#### Filtering Parameters
+
+**page**
+: The page to return in the paginated result set.
+
+**per_page**
+: The number of result to include per pagein the paginated result set. Defaults to 50 if not specified and the maximum number of results returned per page is 200.
+
+**last_updated_at**
+: Filters the results by the orders' last updated at timestamp and only returns results with a timestamp newer than or equal to the specified value. Defaults to 1 week ago if not specified. The maxiumum time this value can be set to is 3 months ago.
+
+**status**
+: Filters the results by the orders' ShippingEasy order status. Defaults to "shipped". Possible values are "shipped" and "ready_for_shipment". It is possible to pass an array of statuses, e.g. ["shipping", "ready_for_shipment"].
+
+**page**
+: The page to return in the paginated result set.
+
+#### Filtering Example
+
+    $order = new ShippingEasy_Order();
+    $order->findAll(array("page" => 1, "per_page" => 1, "status" => array("ready_for_shipment", "shipped"), "last_updated_at" => "2014-05-07 14:42:18 UTC"));
+
+An example JSON response may be found here:
+
+https://gist.github.com/twmills/005b3c4ab9c85330a801
+
+#### Filtering by Store Example
+
+If you would like to filter your results to a specific store, initialize your object with the store api key:
+
+    $order = new ShippingEasy_Order("d8821dde1d32f408def40b77273d5c11");
+    $order->findAll(array("page" => 1, "per_page" => 1, "status" => array("ready_for_shipment", "shipped"), "last_updated_at" => "2014-05-07 14:42:18 UTC"));
+
+#### Possible Exceptions
+
+##### ShippingEasy_AuthenticationError
+Your credentials could not be authenticated.
+
+##### ShippingEasy_InvalidRequestError
+The orders retrieved for one or more of the following reasons:
+
+* The API timestamp could not be parsed.
+
+The exception will contain a message that indicates which of these conditions failed.
+
 ### Adding an order
 
 To add an order to a store, first instantiate a new order object with the store's API key and an associative array of the order data. (A comprehensive list of the data attributes and their definitions can be found below.)
