@@ -50,8 +50,8 @@ The arguments for the constructor are as follows:
 * **http_method** - The method of the http request. E.g. "post" or "get".
 * **path** - The path of the request's uri. E.g. "/orders/callback"
 * **params** - An associative array of the request's query string parameters. E.g. array("api_signature" => "asdsadsad", "api_timestamp" => "1234567899")
- * **json_body** - The request body as a JSON string.
- * **api_secret** - Optional. The ShippingEasy API secret for the customer account. Defaults to the global configuration if set.
+* **json_body** - The request body as a JSON string.
+* **api_secret** - Optional. The ShippingEasy API secret for the customer account. Defaults to the global configuration if set.
 
 ## API Calls
 
