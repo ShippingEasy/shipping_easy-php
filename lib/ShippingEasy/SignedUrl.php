@@ -2,7 +2,7 @@
 
 class ShippingEasy_SignedUrl
 {
-  public function __construct($http_method=null, $path=null, $params=null, $json_body=null, $api_timestamp=null, $api_secret = null, $api_key = null)
+  public function __construct($http_method=null, $path=null, $params=null, $json_body=null, $api_timestamp=null, $api_key = null, $api_secret = null)
   {
     $api_secret = isset($api_secret) ? $api_secret : ShippingEasy::$apiSecret;    
     $params["api_key"] = isset($api_key) ? $api_key : ShippingEasy::$apiKey;

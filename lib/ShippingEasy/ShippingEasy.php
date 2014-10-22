@@ -4,6 +4,8 @@ abstract class ShippingEasy
 {
   public static $apiKey;
   public static $apiSecret;
+  public static $partnerApiKey;
+  public static $partnerApiSecret;
   public static $apiBase = 'https://app.shippingeasy.com';
   public static $apiVersion = null;
   const VERSION = '0.4.0';
@@ -18,9 +20,24 @@ abstract class ShippingEasy
     self::$apiKey = $apiKey;
   }
 
+  public static function getPartnerApiKey()
+    {
+      return self::$partnerApiKey;
+    }
+
+  public static function setPartnerApiKey($partnerApiKey)
+  {
+    self::$partnerApiKey = $partnerApiKey;
+  }
+
   public static function setApiSecret($apiSecret)
   {
     self::$apiSecret = $apiSecret;
+  }
+
+  public static function setPartnerApiSecret($partnerApiSecret)
+  {
+    self::$partnerApiSecret = $partnerApiSecret;
   }
 
   public static function getApiVersion()

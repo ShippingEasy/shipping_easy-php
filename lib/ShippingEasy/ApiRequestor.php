@@ -38,9 +38,9 @@ class ShippingEasy_ApiRequestor
     return implode("&", $r);
   }
 
-  public function request($meth, $path, $params=null, $payload = null)
+  public function request($meth, $path, $params=null, $payload = null, $apiKey = null, $apiSecret = null)
   {
-    list($rbody, $rcode, $myApiKey) = $this->_requestRaw($meth, $path, $params, $payload);
+    list($rbody, $rcode) = $this->_requestRaw($meth, $path, $params, $payload, $apiKey, $apiSecret);
     $resp = $this->_interpretResponse($rbody, $rcode);
     return $resp;
   }
@@ -66,13 +66,9 @@ class ShippingEasy_ApiRequestor
     }
   }
 
-  private function _requestRaw($http_method, $path, $params, $payload)
+  private function _requestRaw($http_method, $path, $params, $payload, $apiKey, $apiSecret)
   {
-    $myApiKey = ShippingEasy::$apiKey;
-    if (!$myApiKey)
-      throw new ShippingEasy_Error('No API key provided.  (HINT: set your API key using "ShippingEasy::setApiKey(<API-KEY>)".  You can find your store\'s API keys from the ShippingEasy settings interface.');
-
-    $url = new ShippingEasy_SignedUrl($http_method, $path, $params, $payload);
+    $url = new ShippingEasy_SignedUrl($http_method, $path, $params, $payload, null, $apiKey, $apiSecret);
     $absUrl = $url->toString();
 
     $langVersion = phpversion();
@@ -86,13 +82,13 @@ class ShippingEasy_ApiRequestor
 
     $headers = array('X-ShippingEasy-Client-User-Agent: ' . json_encode($ua),
                      'User-Agent: ShippingEasy/v1 PhpBindings/' . ShippingEasy::VERSION,
-                     'Authorization: Bearer ' . $myApiKey);
+                     'Authorization: Bearer ' . $apiKey);
 
     if (ShippingEasy::$apiVersion)
       $headers[] = 'ShippingEasy-Version: ' . ShippingEasy::$apiVersion;
 
     list($rbody, $rcode) = $this->_curlRequest($http_method, $absUrl, $headers, $payload);
-    return array($rbody, $rcode, $myApiKey);
+    return array($rbody, $rcode);
   }
 
   private function _interpretResponse($rbody, $rcode)
