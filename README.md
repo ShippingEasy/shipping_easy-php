@@ -102,7 +102,7 @@ If successful the call will return a JSON hash included an array of orders and a
 : Filters the results by the orders' last updated at timestamp and only returns results with a timestamp newer than or equal to the specified value. Defaults to 1 week ago if not specified. The maxiumum time this value can be set to is 3 months ago.
 
 **status**
-: Filters the results by the orders' ShippingEasy order status. Defaults to "shipped". Possible values are "shipped" and "ready_for_shipment". It is possible to pass an array of statuses, e.g. ["shipping", "ready_for_shipment"].
+: Filters the results by the orders' ShippingEasy order status. Defaults to "shipped". Possible values are "shipped" , "cleared", and "ready_for_shipment". It is possible to pass an array of statuses, e.g. ["shipping", "ready_for_shipment"].
 
 **page**
 : The page to return in the paginated result set.
