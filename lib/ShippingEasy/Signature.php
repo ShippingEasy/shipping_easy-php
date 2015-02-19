@@ -9,7 +9,12 @@ class ShippingEasy_Signature
     $this->path = $path;
     ksort($params);
     $this->params = $params;
-    $this->json_body = str_replace("\/","/", json_encode($json_body));
+
+    if (is_string($json_body)) {
+      $this->json_body = str_replace("\/","/", $json_body);
+    } else {
+      $this->json_body = json_encode($json_body);
+    }
   }
 
   public function getApiSecret()
