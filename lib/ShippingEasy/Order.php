@@ -17,9 +17,9 @@ class ShippingEasy_Order extends ShippingEasy_Object
     return $this->request("get", "/api/orders/$id");
   }
 
-  public function findByStore($id)
+  public function findByStore($external_order_id)
     {
-      return $this->request("get", "/api/stores/$this->store_api_key/orders/$id");
+      return $this->request("get", "/api/stores/$this->store_api_key/orders/$external_order_id");
     }
 
   public function findAllByStore($params=array())
