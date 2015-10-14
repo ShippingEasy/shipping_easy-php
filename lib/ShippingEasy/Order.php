@@ -12,6 +12,16 @@ class ShippingEasy_Order extends ShippingEasy_Object
     return $this->request("post", "/api/stores/$this->store_api_key/orders", null, array("order" => $this->values));
   }
 
+  public function updateRecipient($external_order_id, $recipient_data)
+  {
+    return $this->request("put", "/api/stores/$this->store_api_key/orders/$external_order_id/recipient", null, array("recipient" => $recipient_data));
+  }
+
+  public function updateStatus($external_order_id, $new_status)
+    {
+      return $this->request("put", "/api/stores/$this->store_api_key/orders/$external_order_id/status", null, array("order" => array("status" => $new_status));
+    }
+
   public function find($id)
   {
     return $this->request("get", "/api/orders/$id");
