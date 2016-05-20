@@ -18,9 +18,9 @@ class ShippingEasy_Order extends ShippingEasy_Object
   }
 
   public function updateStatus($external_order_id, $new_status)
-    {
-      return $this->request("put", "/api/stores/$this->store_api_key/orders/$external_order_id/status", null, array("order" => array("status" => $new_status));
-    }
+  {
+      return $this->request("put", "/api/stores/$this->store_api_key/orders/$external_order_id/status", null, array("order" => array("order_status" => $new_status)));
+  }
 
   public function find($id)
   {
@@ -28,9 +28,9 @@ class ShippingEasy_Order extends ShippingEasy_Object
   }
 
   public function findByStore($external_order_id)
-    {
+  {
       return $this->request("get", "/api/stores/$this->store_api_key/orders/$external_order_id");
-    }
+  }
 
   public function findAllByStore($params=array())
   {
