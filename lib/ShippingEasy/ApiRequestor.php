@@ -120,6 +120,14 @@ class ShippingEasy_ApiRequestor
       $headers[] = 'Content-Type: application/json';
       $headers[] = 'Content-Length: ' . strlen($payload);
       $opts[CURLOPT_POSTFIELDS] = $payload;
+    } else if ($meth == 'put') {
+      $opts[CURLOPT_CUSTOMREQUEST] = 'PUT';
+      if ($payload)
+        $payload = json_encode($payload);
+
+      $headers[] = 'Content-Type: application/json';
+      $headers[] = 'Content-Length: ' . strlen($payload);
+      $opts[CURLOPT_POSTFIELDS] = $payload;
     } else if ($meth == 'delete')  {
       $opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
       if (count($params) > 0) {
