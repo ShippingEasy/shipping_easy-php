@@ -6,7 +6,7 @@ abstract class ShippingEasy
   public static $apiSecret;
   public static $partnerApiKey;
   public static $partnerApiSecret;
-  public static $apiBase = 'https://app.shippingeasy.com';
+  public static $apiBase = 'https://api.shippingeasy.com';
   public static $apiVersion = null;
   const VERSION = '0.4.3';
 
