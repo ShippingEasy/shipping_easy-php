@@ -142,6 +142,9 @@ class ShippingEasy_ApiRequestor
     $opts[CURLOPT_RETURNTRANSFER] = true;
     $opts[CURLOPT_CONNECTTIMEOUT] = 30;
     $opts[CURLOPT_TIMEOUT] = 80;
+    $opts[CURLOPT_FOLLOWLOCATION] = true;
+    $opts[CURLOPT_MAXREDIRS] = 4;
+    $opts[CURLOPT_POSTREDIR] = 1 | 2 | 4; // Maintain method across redirect for all 3XX redirect types
     $opts[CURLOPT_HTTPHEADER] = $headers;
 
     curl_setopt_array($curl, $opts);
