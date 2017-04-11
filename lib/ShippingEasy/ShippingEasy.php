@@ -2,56 +2,56 @@
 
 abstract class ShippingEasy
 {
-  public static $apiKey;
-  public static $apiSecret;
-  public static $partnerApiKey;
-  public static $partnerApiSecret;
-  public static $apiBase = 'https://api.shippingeasy.com';
-  public static $apiVersion = null;
-  const VERSION = '0.4.3';
+    public static $apiKey;
+    public static $apiSecret;
+    public static $partnerApiKey;
+    public static $partnerApiSecret;
+    public static $apiBase = 'https://api.shippingeasy.com';
+    public static $apiVersion = null;
+    const VERSION = '0.4.3';
 
-  public static function getApiKey()
-  {
-    return self::$apiKey;
-  }
-
-  public static function setApiKey($apiKey)
-  {
-    self::$apiKey = $apiKey;
-  }
-
-  public static function getPartnerApiKey()
+    public static function getApiKey()
     {
-      return self::$partnerApiKey;
+        return self::$apiKey;
     }
 
-  public static function setPartnerApiKey($partnerApiKey)
-  {
-    self::$partnerApiKey = $partnerApiKey;
-  }
+    public static function setApiKey($apiKey)
+    {
+        self::$apiKey = $apiKey;
+    }
 
-  public static function setApiSecret($apiSecret)
-  {
-    self::$apiSecret = $apiSecret;
-  }
+    public static function getPartnerApiKey()
+    {
+        return self::$partnerApiKey;
+    }
 
-  public static function setPartnerApiSecret($partnerApiSecret)
-  {
-    self::$partnerApiSecret = $partnerApiSecret;
-  }
+    public static function setPartnerApiKey($partnerApiKey)
+    {
+        self::$partnerApiKey = $partnerApiKey;
+    }
 
-  public static function getApiVersion()
-  {
-    return self::$apiVersion;
-  }
+    public static function setApiSecret($apiSecret)
+    {
+        self::$apiSecret = $apiSecret;
+    }
 
-  public static function setApiVersion($apiVersion)
-  {
-    self::$apiVersion = $apiVersion;
-  }
+    public static function setPartnerApiSecret($partnerApiSecret)
+    {
+        self::$partnerApiSecret = $partnerApiSecret;
+    }
 
-  public static function setApiBase($apiBase)
-  {
-    self::$apiBase = $apiBase;
-  }
+    public static function getApiVersion()
+    {
+        return self::$apiVersion;
+    }
+
+    public static function setApiVersion($apiVersion)
+    {
+        self::$apiVersion = $apiVersion;
+    }
+
+    public static function setApiBase($apiBase)
+    {
+        self::$apiBase = $apiBase;
+    }
 }
