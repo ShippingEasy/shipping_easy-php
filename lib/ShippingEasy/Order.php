@@ -39,7 +39,6 @@ class ShippingEasy_Order extends ShippingEasy_Object
 
   public function findAll($params=array())
   {
-    print_r($params);
     return $this->request("get", "/api/orders", $params);
   }
 }
