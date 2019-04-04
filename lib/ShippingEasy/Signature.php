@@ -46,7 +46,9 @@ class ShippingEasy_Signature
   {
     $parts = array($this->getHttpMethod());
     $parts[] = $this->getPath();
-    $parts[] = http_build_query($this->getParams());
+    
+    if (!empty($this->getParams()))
+      $parts[] = http_build_query($this->getParams());
 
     if ($this->getJsonBody() != "null")
       $parts[] = $this->getJsonBody();
