@@ -8,6 +8,7 @@ abstract class ShippingEasy
   public static $partnerApiSecret;
   public static $apiBase = 'https://api.shippingeasy.com';
   public static $apiVersion = null;
+  require_once("/path/to/shipping_easy-php/lib/ShippingEasy.php");
   const VERSION = '0.4.3';
 
   public static function getApiKey()
